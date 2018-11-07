@@ -5,6 +5,7 @@ public enum EstablishmentType {
     PIZZERIA("Pizzeria"),
     FAST_FOOD("Fast-Food"),
     BAR("Bar"),
+    PUB("Pub"),
     CAFE("Cafe"),
     CONFECTIONERY("Сonfectionery"),
     CLUB("Club"),

@@ -1,15 +1,19 @@
 package com.project;
 
 import com.project.config.SpringConfig;
+import com.project.dao.AdminDao;
 import com.project.dao.CelebrationDao;
 import com.project.dao.EstablishmentDao;
+import com.project.model.Admin;
 import com.project.model.Celebration;
 import com.project.model.Establishment;
 import com.project.model.enums.EstablishmentPriceCategory;
 import com.project.model.enums.EstablishmentType;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -20,6 +24,7 @@ public class Main {
 
         final CelebrationDao celebrationDao = context.getBean(CelebrationDao.class);
         final EstablishmentDao establishmentDao = context.getBean(EstablishmentDao.class);
+        final AdminDao adminDao = context.getBean(AdminDao.class);
 
         Celebration celebrationAdd = new Celebration();
         celebrationAdd.setName("First");
@@ -98,6 +103,24 @@ public class Main {
         System.out.println(celebrationDao.getCelebrationsByEstablishment(establishmentAdd));
 
 
+
+        Admin adminAdd = new Admin();
+        adminAdd.setName("Super Admin");
+        adminAdd.setEmail("admin@gmail.com");
+        adminAdd.setLogin("admin");
+        adminAdd.setPassword("password");
+        adminDao.addAdmin(adminAdd);
+
+        Admin adminUpdate = adminDao.getAdminById(5);
+        adminUpdate.setName("Mega Admin");
+        adminDao.updateAdmin(adminUpdate);
+
+//        adminDao.deleteAdmin(adminDao.getAdminById(5));
+
+        System.out.println(adminDao.getAllAdmins());
+
+
+        System.out.println(establishmentDao.getEstablishmentsByCelebrationAndNumberOfSeats(celebrationDao.getCelebrationById(1), 1));
 
 
 

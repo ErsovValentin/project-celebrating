@@ -40,7 +40,7 @@
 </c:if>
 
 
-<h1>Add Client</h1>
+<h1>Add Celebration</h1>
 <c:url var="addAction" value="/celebrations/addCelebration"/>
 
 <form:form action="${addAction}" modelAttribute="celebration">

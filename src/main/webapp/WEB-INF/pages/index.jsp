@@ -16,6 +16,8 @@
 <ul>
     <li><a href="<c:url value="/establishments"/>">Establishments</a></li>
     <li><a href="<c:url value="/celebrations"/>">Celebrations</a></li>
+    <li><a href="<c:url value="/admins"/>">Admins</a></li>
+    <li><a href="<c:url value="/all-establishmnets"/>">All Establishments</a></li>
 </ul>
 
 </body>

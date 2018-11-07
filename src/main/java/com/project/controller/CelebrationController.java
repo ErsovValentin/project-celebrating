@@ -28,7 +28,7 @@ public class CelebrationController {
     {
         model.addAttribute("listOfCelebrations",celebrationService.getAllCelebrations());
         model.addAttribute("celebration",new Celebration());
-        return "/celebrationAdmin/celebrations";
+        return "/admins-tables/celebrations_table_view";
     }
 
     @RequestMapping(value = "celebrations/addCelebration", method = RequestMethod.POST)
@@ -50,7 +50,7 @@ public class CelebrationController {
     {
         model.addAttribute("listOfCelebrations",celebrationService.getAllCelebrations());
         model.addAttribute("celebration",celebrationService.getCelebrationById(celebrationId));
-        return "/celebrationAdmin/celebrations";
+        return "/admins-tables/celebrations_table_view";
     }
 
     @RequestMapping("/deleteCelebration/{id}")

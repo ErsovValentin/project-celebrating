@@ -15,5 +15,7 @@ public interface EstablishmentDao {
     public void deleteEstablishment(final Establishment establishmentDelete);
     public List<Establishment> getEstablismentsByCelebration (final Celebration celebration);
 
+    public List<Establishment> getEstablishmentsByCelebrationAndNumberOfSeats(final Celebration celebration, final int numberOfSeats);
+
 
 }

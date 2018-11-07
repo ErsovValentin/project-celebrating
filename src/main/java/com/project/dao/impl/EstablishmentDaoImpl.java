@@ -60,4 +60,12 @@ public class EstablishmentDaoImpl implements EstablishmentDao {
                 .setParameter(1, celebration.getId())
                 .list();
     }
+
+    public List<Establishment> getEstablishmentsByCelebrationAndNumberOfSeats(final Celebration celebration, final int numberOfSeats) {
+        return (ArrayList<Establishment>)session()
+                .createQuery("from Establishment e where ?1 in elements(e.celebrations) and e.numberOfSeats >= ?2")
+                .setParameter(1, celebration)
+                .setParameter(2, numberOfSeats)
+                .list();
+    }
 }

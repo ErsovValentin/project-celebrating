@@ -8,7 +8,7 @@ import java.util.List;
 public interface CelebrationDao {
 
     public List<Celebration> getAllCelebrations();
-    public Celebration getCelebrationById(final int celebratioId);
+    public Celebration getCelebrationById(final int celebrationId);
     public void addCelebration(final Celebration celebrationAdd);
     public void updateCelebration(final Celebration celebrationUpdate);
     public void deleteCelebration(final Celebration celebrationDelete);

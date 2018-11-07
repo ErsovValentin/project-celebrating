@@ -22,6 +22,7 @@ public class EstablishmentController {
         this.establishmentService = establishmentService;
     }
 
+
     @RequestMapping(value = "/establishments")
     public String getAllEstablishments(Model model)
     {
@@ -29,7 +30,7 @@ public class EstablishmentController {
         model.addAttribute("establishment",new Establishment());
         model.addAttribute("priceCategory",EstablishmentPriceCategory.values());
         model.addAttribute("type",EstablishmentType.values());
-        return "/establishmentAdmin/establishments";
+        return "/admins-tables/establishments_table_view";
     }
 
     @RequestMapping(value = "establishment/addEstablishment", method = RequestMethod.POST)
@@ -51,7 +52,7 @@ public class EstablishmentController {
     {
         model.addAttribute("listOfCelebrations",establishmentService.getAllEstablishments());
         model.addAttribute("celebration",establishmentService.getEstablishmentById(establishmentId));
-        return "/establishmentAdmin/establishments";
+        return "/admins-tables/establishments_table_view";
     }
 
     @RequestMapping("/deleteEstablishment/{id}")
@@ -62,5 +63,11 @@ public class EstablishmentController {
         return "redirect:/establishments";
     }
 
+    @RequestMapping("/all-establishmnets")
+    public String showAllEstablishments(Model model)
+    {
+        model.addAttribute("listOfEstablishments",establishmentService.getAllEstablishments());
+        return "/main-functional/all_establishments_view";
+    }
 
 }

@@ -34,9 +34,9 @@ public class CelebrationDaoImpl implements CelebrationDao {
                 .list();
     }
 
-    public Celebration getCelebrationById(int celebratioId) {
+    public Celebration getCelebrationById(int celebrationId) {
         return (Celebration)session()
-                .get(Celebration.class, celebratioId);
+                .get(Celebration.class, celebrationId);
     }
 
     public void addCelebration(Celebration celebrationAdd) {
