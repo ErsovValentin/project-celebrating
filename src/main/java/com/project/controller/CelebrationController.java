@@ -23,7 +23,7 @@ public class CelebrationController {
         return "index";
     }
 
-    @RequestMapping(value = "/celebrations")
+    @RequestMapping(value = "/admin/celebrations", produces = "text/plain;charset=UTF-8")
     public String getAllCelebrations(Model model)
     {
         model.addAttribute("listOfCelebrations",celebrationService.getAllCelebrations());
@@ -31,7 +31,7 @@ public class CelebrationController {
         return "/admins-tables/celebrations_table_view";
     }
 
-    @RequestMapping(value = "celebrations/addCelebration", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/celebrations/addCelebration", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
     public String addCelebration(@ModelAttribute("celebration") Celebration celebration)
     {
         if(celebration.getId() == 0)
@@ -42,10 +42,10 @@ public class CelebrationController {
         {
             celebrationService.updateCelebration(celebration);
         }
-        return "redirect:/celebrations";
+        return "redirect:/admin/celebrations";
     }
 
-    @RequestMapping("/updateCelebration/{id}")
+    @RequestMapping(value = "/admin/celebrations/updateCelebration/{id}", produces = "text/plain;charset=UTF-8")
     public String updateCelebration(@PathVariable("id")int celebrationId, Model model)
     {
         model.addAttribute("listOfCelebrations",celebrationService.getAllCelebrations());
@@ -53,12 +53,12 @@ public class CelebrationController {
         return "/admins-tables/celebrations_table_view";
     }
 
-    @RequestMapping("/deleteCelebration/{id}")
+    @RequestMapping(value = "/admin/celebrations/deleteCelebration/{id}", produces = "text/plain;charset=UTF-8")
     public String deleteCelebration(@PathVariable("id")int celebrationId, Model model)
     {
         final Celebration celebrationDelete = celebrationService.getCelebrationById(celebrationId);
         celebrationService.deleteCelebration(celebrationDelete);
-        return "redirect:/celebrations";
+        return "redirect:/admin/celebrations";
     }
 
 

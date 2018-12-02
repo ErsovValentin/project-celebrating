@@ -43,6 +43,11 @@ public class CelebrationService {
         celebrationDao.deleteCelebration(celebrationDelete);
     }
 
+    public Celebration getCelebrationByName(String name)
+    {
+        return celebrationDao.getCelebrationByName(name);
+    }
+
     public List<Celebration> getCelebrationsByEstablishment(final Establishment establishment)
     {
         return celebrationDao.getCelebrationsByEstablishment(establishment);

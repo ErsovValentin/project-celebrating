@@ -21,7 +21,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @RequestMapping("/admins")
+    @RequestMapping("/admin/admins")
     public String getAllAdmins(Model model)
     {
         model.addAttribute("listOfAdmins",adminService.getAllAdmins());
@@ -29,7 +29,7 @@ public class AdminController {
         return "/admins-tables/admins_table_view";
     }
 
-    @RequestMapping(value = "admins/addAdmin",method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/admins/addAdmin",method = RequestMethod.POST)
     public String addAdmin (@ModelAttribute("admin") Admin admin)
     {
         if(admin.getId() == 0)
@@ -40,10 +40,10 @@ public class AdminController {
         {
             adminService.updateAdmin(admin);
         }
-        return "redirect:/admins";
+        return "redirect:/admin/admins";
     }
 
-    @RequestMapping("/updateAdmin/{id}")
+    @RequestMapping("/admin/admins/updateAdmin/{id}")
     public String updateAdmin(@PathVariable("id")int adminId, Model model)
     {
         model.addAttribute("listOfAdmins",adminService.getAllAdmins());
@@ -51,11 +51,12 @@ public class AdminController {
         return "/admins-tables/admins_table_view";
     }
 
-    @RequestMapping("/deleteAdmin/{id}")
+    @RequestMapping("/admin/admins/deleteAdmin/{id}")
     public String deleteAdmin(@PathVariable("id")int adminId)
     {
         final Admin adminDelete = adminService.getAdminById(adminId);
         adminService.deleteAdmin(adminDelete);
-        return "redirect:/admins";
+        return "redirect:/admin/admins";
     }
+
 }

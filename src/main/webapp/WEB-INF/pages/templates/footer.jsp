@@ -1,8 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%--JQuery--%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
 <%--Scripts for DataTables--%>
 <script src="<c:url value="/resources/scripts/datatables.js"/>" type="application/javascript"></script>
@@ -15,5 +12,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
+<script src="<c:url value="/resources/scripts/select2.js"/>"></script>
 </body>
 </html>

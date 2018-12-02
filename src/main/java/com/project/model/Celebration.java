@@ -1,7 +1,5 @@
 package com.project.model;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,11 +12,10 @@ public class Celebration {
     @Column(name = "cel_id")
     private int id;
 
-    @Column(name = "cel_name", length = 50)
-    @NotNull
+    @Column(name = "cel_name", length = 50, nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "celebrations")
+    @ManyToMany(mappedBy = "celebrations", fetch = FetchType.EAGER)
     private Set<Establishment> establishments;
 
     public Celebration() {
@@ -53,6 +50,7 @@ public class Celebration {
         return "Celebration{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", establishments=" + establishments +
                 '}';
     }
 }

@@ -1,7 +1,6 @@
 package com.project.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "admin")
@@ -12,20 +11,17 @@ public class Admin {
     @Column(name = "admin_id")
     private int id;
 
-    @Column(name = "admin_name")
-    @NotNull
+    @Column(name = "admin_name",nullable = false)
     private String name;
 
-    @Column(name = "admin_email")
-    @NotNull
+    @Column(name = "admin_email",nullable = false)
     private String email;
 
-    @Column(name = "login")
-    @NotNull
+    @Column(name = "login",nullable = false)
+
     private String login;
 
-    @Column(name = "password")
-    @NotNull
+    @Column(name = "password",nullable = false)
     private String password;
 
     public Admin() {

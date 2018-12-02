@@ -53,4 +53,12 @@ public class AdminDoaImpl implements AdminDao {
         session()
                 .delete(adminDelete);
     }
+
+    @Override
+    public Admin getAdminByLogin(String login) {
+        return (Admin)session()
+                .createQuery("from Admin as ad where ad.login = ?1", Admin.class)
+                .setParameter(1, login)
+                .getSingleResult();
+    }
 }

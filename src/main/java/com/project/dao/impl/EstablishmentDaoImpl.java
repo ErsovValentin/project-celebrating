@@ -63,9 +63,16 @@ public class EstablishmentDaoImpl implements EstablishmentDao {
 
     public List<Establishment> getEstablishmentsByCelebrationAndNumberOfSeats(final Celebration celebration, final int numberOfSeats) {
         return (ArrayList<Establishment>)session()
-                .createQuery("from Establishment e where ?1 in elements(e.celebrations) and e.numberOfSeats >= ?2")
-                .setParameter(1, celebration)
+                .createQuery("from Establishment e where e.numberOfSeats >= ?2 and ?1 in elements(e.celebrations) ",Establishment.class)
+                .setParameter(1,celebration)
                 .setParameter(2, numberOfSeats)
+                .list();
+    }
+
+    public List<Establishment> getRandomEstablishments() {
+        return (ArrayList<Establishment>)session()
+                .createQuery("from Establishment ORDER BY RAND()", Establishment.class)
+                .setMaxResults(7)
                 .list();
     }
 }

@@ -55,9 +55,17 @@ public class CelebrationDaoImpl implements CelebrationDao {
 
     }
 
+    @Override
+    public Celebration getCelebrationByName(String name) {
+        return (Celebration)session()
+                .createQuery("from Celebration c where c.name = ?1", Celebration.class)
+                .setParameter(1, name)
+                .getSingleResult();
+    }
+
     public List<Celebration> getCelebrationsByEstablishment(Establishment establishment) {
         return (ArrayList<Celebration>)session()
-                .createQuery("select e.celebrations from Establishment e where e.id = ?1")
+                .createQuery("select e.celebrations from Establishment e where e.id = ?1",Celebration.class)
                 .setParameter(1,establishment.getId())
                 .list();
     }

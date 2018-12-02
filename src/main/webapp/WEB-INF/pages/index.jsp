@@ -7,18 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Home Page</title>
-</head>
-<body>
-<h1>Home Page</h1>
-<ul>
-    <li><a href="<c:url value="/establishments"/>">Establishments</a></li>
-    <li><a href="<c:url value="/celebrations"/>">Celebrations</a></li>
-    <li><a href="<c:url value="/admins"/>">Admins</a></li>
-    <li><a href="<c:url value="/all-establishmnets"/>">All Establishments</a></li>
-</ul>
+<%--Page content--%>
 
-</body>
-</html>
+<jsp:include page="/find-establishments"/>
+
+<%--Page content--%>
+

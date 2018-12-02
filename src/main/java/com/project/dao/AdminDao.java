@@ -11,4 +11,5 @@ public interface AdminDao {
     public void addAdmin(Admin adminAdd);
     public void updateAdmin(Admin adminUpdate);
     public void deleteAdmin(Admin adminDelete);
+    public Admin getAdminByLogin(String login);
 }

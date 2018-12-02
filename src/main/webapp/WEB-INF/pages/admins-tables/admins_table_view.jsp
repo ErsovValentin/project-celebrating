@@ -8,29 +8,27 @@
   Time: 12:57
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Admins</title>
-</head>
-<body>
+<jsp:include page="../templates/header.jsp"/>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
-<a href="<c:url value="/"/> ">Back to main menu</a>
+<jsp:include page="../templates/menu.jsp"/>
 <br/>
 <br/>
 
-<h1>Admin list</h1>
+<div class="card">
 <c:if test="${!empty listOfAdmins}">
-    <table border="2">
-        <tr>
+    <h1>Список админов</h1>
+    <table border="2" id="table_id" class="table table-striped table-bordered">
+        <thead>
             <td>ID</td>
-            <td>Name</td>
+            <td>Полное имя</td>
             <td>Email</td>
-            <td>Login</td>
-            <td>Password</td>
-            <td>Update</td>
-            <td>Delete</td>
-        </tr>
+            <td>Логин</td>
+            <td>Пароль</td>
+            <td>Редактировать</td>
+            <td>Удалить</td>
+        </thead>
+        <tbody>
         <c:forEach items="${listOfAdmins}" var="admin">
             <tr>
                 <td>${admin.id}</td>
@@ -38,15 +36,25 @@
                 <td>${admin.email}</td>
                 <td>${admin.login}</td>
                 <td>${admin.password}</td>
-                <td><a href="<c:url value="/updateAdmin/${admin.id}"/>">Update</a></td>
-                <td><a href="<c:url value="/deleteAdmin/${admin.id}"/>">Delete</a></td>
+                <td><a href="<c:url value="/admin/admins/updateAdmin/${admin.id}"/>"><i class="fa fa-pencil"></i></a></td>
+                <td><a href="<c:url value="/admin/admins/deleteAdmin/${admin.id}"/>"><i class="fa fa-remove"></i></a></td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </c:if>
+</div>
 
-<h1>Add Admin</h1>
-<c:url var="addAction" value="/admins/addAdmin"/>
+<c:choose>
+    <c:when test="${admin.id == 0}">
+        <h5>Добавить админа</h5>
+    </c:when>
+    <c:otherwise>
+        <h5>Редактировать админа</h5>
+    </c:otherwise>
+</c:choose>
+
+<c:url var="addAction" value="/admin/admins/addAdmin"/>
 
 <form:form action="${addAction}" modelAttribute="admin">
     <table>
@@ -67,7 +75,7 @@
         <tr>
             <td>
                 <form:label path="name">
-                    <spring:message text="Name"/>
+                    <spring:message text="Полное имя"/>
                 </form:label>
             </td>
             <td>
@@ -89,7 +97,7 @@
         <tr>
             <td>
                 <form:label path="login">
-                    <spring:message text="Login"/>
+                    <spring:message text="Логин"/>
                 </form:label>
             </td>
             <td>
@@ -100,11 +108,11 @@
         <tr>
             <td>
                 <form:label path="password">
-                    <spring:message text="Password"/>
+                    <spring:message text="Пароль"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="password"/>
+                <form:input type="password" path="password"/>
             </td>
         </tr>
 
@@ -112,10 +120,10 @@
             <td>
                 <c:choose>
                     <c:when test="${admin.id == 0}">
-                        <input type="submit" value="<spring:message text="Add admin"/> "/>
+                        <input type="submit" value="<spring:message text="Добавить админа"/> "/>
                     </c:when>
                     <c:otherwise>
-                        <input type="submit" value="<spring:message text="Update admin"/> "/>
+                        <input type="submit" value="<spring:message text="Редактировать админа"/> "/>
                     </c:otherwise>
                 </c:choose>
             </td>
@@ -124,5 +132,5 @@
     </table>
 </form:form>
 
-</body>
-</html>
+<jsp:include page="../templates/footer.jsp"/>
+

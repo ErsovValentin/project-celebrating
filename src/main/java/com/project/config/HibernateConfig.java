@@ -11,6 +11,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Enumeration;
 import java.util.Properties;
 
 @Configuration
@@ -51,10 +55,16 @@ public class HibernateConfig {
     {
         final Properties properties = new Properties();
         properties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQLDialect");
-//        properties.put("hibernate.show_sql","true");
+
+        properties.put("hibernate.connection.Useunicode","true");
+        properties.put("hibernate.connection.characterEncoding","UTF-8");
+        properties.put("hibernate.connection.charSet","UTF-8");
+
+        properties.put("hibernate.show_sql","true");
         properties.put("hibernate.format_sql","true");
-        properties.put("hibernate.hbm2ddl.auto", "create");
-//        properties.put("hibernate.hbm2ddl.auto", "update");
+
+//        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         return properties;
     }
 }

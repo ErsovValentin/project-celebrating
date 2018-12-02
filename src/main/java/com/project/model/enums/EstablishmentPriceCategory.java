@@ -1,9 +1,9 @@
 package com.project.model.enums;
 
 public enum  EstablishmentPriceCategory {
-    LOW("Low"),
-    MEDIUM("Medium"),
-    High("High");
+    LOW("Низкая"),
+    MEDIUM("Средняя"),
+    High("Высокая");
 
     private final String name;
 

@@ -8,40 +8,52 @@
   Time: 18:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Celebrations</title>
-</head>
+<jsp:include page="../templates/header.jsp"/>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+
 <body>
-<a href="<c:url value="/"/> ">Back to main menu</a>
+
+<jsp:include page="../templates/menu.jsp"/>
 <br/>
 <br/>
 
-<h1>Celebration list</h1>
-
+<div class="card">
 <c:if test="${!empty listOfCelebrations}">
-    <table border="2">
-        <tr>
+    <h1>Список торжеств</h1>
+    <table border="2" id="table_id" class="table table-striped table-bordered">
+        <thead>
             <td>ID</td>
-            <td>Name</td>
-            <td>Update</td>
-            <td>Delete</td>
-        </tr>
+            <td>Название торжества</td>
+            <td>Редактировать</td>
+            <td>Удалить</td>
+        </thead>
+        <tbody>
         <c:forEach items="${listOfCelebrations}" var="celebration">
             <tr>
                 <td>${celebration.id}</td>
                 <td>${celebration.name}</td>
-                <td><a href="<c:url value="/updateCelebration/${celebration.id}"/>">Update</a></td>
-                <td><a href="<c:url value="/deleteCelebration/${celebration.id}"/>">Delete</a></td>
+                <td><a href="<c:url value="/admin/celebrations/updateCelebration/${celebration.id}"/>"><i class="fa fa-pencil"></i></a></td>
+                <td><a href="<c:url value="/admin/celebrations/deleteCelebration/${celebration.id}"/>"><i class="fa fa-remove"></i></a></td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </c:if>
+</div>
 
 
-<h1>Add Celebration</h1>
-<c:url var="addAction" value="/celebrations/addCelebration"/>
+<c:url var="addAction" value="/admin/celebrations/addCelebration"/>
+
+
+<c:choose>
+    <c:when test="${celebration.id == 0}">
+        <h5>Добавить Торждество</h5>
+    </c:when>
+<c:otherwise>
+    <h5>Редактировать Торждество</h5>
+</c:otherwise>
+</c:choose>
+
 
 <form:form action="${addAction}" modelAttribute="celebration">
 <table>
@@ -58,33 +70,30 @@
             </td>
         </tr>
     </c:if>
-
     <tr>
         <td>
             <form:label path="name">
-                <spring:message text="Name"/>
+                <spring:message text="Название торжества"/>
             </form:label>
         </td>
         <td>
             <form:input path="name"/>
         </td>
     </tr>
-
     <tr>
         <td>
             <c:choose>
                 <c:when test="${celebration.id == 0}">
-                    <input type="submit" value="<spring:message text="Add celebration"/> "/>
+                    <input type="submit" class="btn btn-primary" value="<spring:message text="Добавить Торждество"/> "/>
                 </c:when>
                 <c:otherwise>
-                    <input type="submit" value="<spring:message text="Update celebration"/> "/>
+                    <input type="submit" class="btn btn-primary" value="<spring:message text="Редактировать Торждество"/> "/>
                 </c:otherwise>
             </c:choose>
         </td>
     </tr>
-
 </table>
 </form:form>
 
-</body>
-</html>
+<jsp:include page="../templates/footer.jsp"/>
+

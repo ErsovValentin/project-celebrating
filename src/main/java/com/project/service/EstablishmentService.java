@@ -48,4 +48,13 @@ public class EstablishmentService {
         return establishmentDao.getEstablismentsByCelebration(celebration);
     }
 
+    public List<Establishment> getEstablishmentsByCelebrationAndNumberOfSeats(final Celebration celebration, final int numberOfSeats)
+    {
+        return establishmentDao.getEstablishmentsByCelebrationAndNumberOfSeats(celebration, numberOfSeats);
+    }
+
+    public List<Establishment> getRandomEstablishments()
+    {
+        return establishmentDao.getRandomEstablishments();
+    }
 }

@@ -1,14 +1,14 @@
 package com.project.model.enums;
 
 public enum EstablishmentType {
-    RESTAURANT("Restaurant"),
-    PIZZERIA("Pizzeria"),
+    RESTAURANT("Ресторан"),
+    PIZZERIA("Пицерия"),
     FAST_FOOD("Fast-Food"),
-    BAR("Bar"),
-    PUB("Pub"),
-    CAFE("Cafe"),
-    CONFECTIONERY("Сonfectionery"),
-    CLUB("Club"),
+    BAR("Бар"),
+    PUB("Паб"),
+    CAFE("Кафе"),
+    CONFECTIONERY("Кофетерий"),
+    CLUB("Клуб"),
     BANQUET_HALL("Banquet hall");
 
     private final String name;
