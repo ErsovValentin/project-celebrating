@@ -163,10 +163,9 @@ public class EstablishmentController {
 
     @RequestMapping(value = "/test")
     public String test(Model model){
-        Establishment establishment = establishmentService.getEstablishmentById(2);
-//        String base64 = Base64.encodeBytes(establishment.getImage());
-        model.addAttribute("establishment",establishment);
-//        model.addAttribute("image",base64);
+        model.addAttribute("celebrations",celebrationService.getAllCelebrations());
+        model.addAttribute("customCelebration",new CelebrationRequest());
+        model.addAttribute("listOfEstablishments",establishmentService.getAllEstablishments());
         return "/test";
     }
 
