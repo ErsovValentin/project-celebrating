@@ -5,7 +5,7 @@
 <!-- Wrapper -->
 <div class="wrapper style1" height="100%">
 
-    <jsp:include page="../templates/menu.jsp"/>
+    <jsp:include page="../templates/menu.jsp"/>с
 
     <div id="footer" class="wrapper style2" >
         <div class="container">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="row half">
                         <div class="12u">
-                            <input class="text" required type='password' name='password' placeholder="Логин" />
+                            <input class="text" required type='password' name='password' placeholder="Пароль" />
                         </div>
                     </div>
 

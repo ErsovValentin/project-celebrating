@@ -5,7 +5,7 @@
 <div id="copyright" class="bg-dark">
     <div class="container">
         <div class="copyright">
-            <p>Design: <a href="http://templated.co">Jeleapova</a>
+            <p>Design: <a href="http://templated.co">Ersov</a>
             <ul class="icons">
                 <li><a href="" class="fa fa-facebook"><span>Facebook</span></a></li>
                 <li><a href="" class="fa fa-twitter"><span>Twitter</span></a></li>

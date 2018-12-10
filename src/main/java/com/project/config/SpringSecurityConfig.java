@@ -12,10 +12,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.*;
+import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.springframework.security.core.userdetails.User.withDefaultPasswordEncoder;
 
@@ -35,7 +41,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance());
+                .passwordEncoder(delegatingPasswordEncoder());
     }
 
     protected void configure(HttpSecurity http) throws Exception {
@@ -57,6 +63,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                 .httpBasic();
+    }
+
+    @Bean
+    public PasswordEncoder delegatingPasswordEncoder() {
+        PasswordEncoder defaultEncoder = new MessageDigestPasswordEncoder("SHA-1");
+
+        return defaultEncoder;
     }
 
 }
